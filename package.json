@@ -1,0 +1,13 @@
+{
+  "name": "task-manager-api",
+  "version": "1.0.0",
+  "description": "A simple Task Manager API for Codee code review evalution",
+  "main": "server.js",
+  "script": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "depedencies": {
+    "express": "^5.1.0"
+  }
+}
