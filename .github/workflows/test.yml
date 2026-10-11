@@ -1,4 +1,4 @@
-name: Task API Tests
+name: Task Manager API Tests
 
 on:
 push:
