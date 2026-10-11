@@ -46,13 +46,13 @@ app.put("/tasks/:id", (req, res) => {
 
   const { title, completed } = req.body;
 
+  // Validate all provided fields before changing the task
   if (title !== undefined) {
     if (typeof title !== "string" || !title.trim()) {
       return res.status(400).json({
         error: "Title must be a non-empty string"
       });
     }
-    task.title = title.trim();
   }
 
   if (completed !== undefined) {
@@ -61,6 +61,14 @@ app.put("/tasks/:id", (req, res) => {
         error: "Completed must be a boolean"
       });
     }
+  }
+
+  // Apply updates only after all validation passes
+  if (title !== undefined) {
+    task.title = title.trim();
+  }
+
+  if (completed !== undefined) {
     task.completed = completed;
   }
 
