@@ -37,7 +37,10 @@ app.post("/tasks", (req, res) => {
 
 // Update an existing task
 app.put("/tasks/:id", (req, res) => {
-  const id = Number(req.params.id);
+  if (!/^\d+$/.test(req.params.id)) {
+  return res.status(400).json({ error: "Invalid task ID" });
+}
+const id = Number(req.params.id);
   const task = tasks.find((task) => task.id === id);
 
   if (!task) {
@@ -77,7 +80,10 @@ app.put("/tasks/:id", (req, res) => {
 
 // Delete an existing task
 app.delete("/tasks/:id", (req, res) => {
-  const id = Number(req.params.id);
+  if (!/^\d+$/.test(req.params.id)) {
+  return res.status(400).json({ error: "Invalid task ID" });
+}
+const id = Number(req.params.id);
   const index = tasks.findIndex((task) => task.id === id);
 
   if (index === -1) {
